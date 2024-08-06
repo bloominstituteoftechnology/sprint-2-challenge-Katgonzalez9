@@ -10,7 +10,7 @@
           return "confirm status manually"
         } else if (profile.active) { 
           profile.active = false; 
-          profile.reason == reason 
+          profile.reason = reason 
       } else {
         profile.active = true
         delete profile.reason
@@ -25,7 +25,7 @@
         return "invalid coordinates"
       } 
     
-      let box = grid[x - 1][y - 1]
+      let box = grid[y - 1][x - 1]
       if (box === "🟥")
       {
         return "🟥 💀"
