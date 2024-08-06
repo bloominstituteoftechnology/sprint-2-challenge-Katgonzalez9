@@ -67,7 +67,7 @@ console.log(result);
 let testProfile = {
   active: true,
   reason: undefined
-};
+}
 
 let result = profileActivation(testProfile);
 console.log(result); 

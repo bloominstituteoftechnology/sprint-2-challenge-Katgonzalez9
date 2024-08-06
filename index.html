@@ -6,23 +6,87 @@
   <script id="challenge">
     // 👉 CHALLENGE 1
     function profileActivation(profile, reason) {
-
-    }
+      if (profile.active && reason === undefined  ) { 
+          return "confirm status manually"
+        } else if (profile.active) { 
+          profile.active = false; 
+          profile.reason == reason 
+      } else {
+        profile.active = true
+        delete profile.reason
+      }
+      return profile
+    } 
+  
 
     // 👉 CHALLENGE 2
     function mineSweeper(grid, x, y) {
-
+      if (x < 1 || x > 3 || y < 1 || y > 3) {
+        return "invalid coordinates"
+      } 
+    
+      let box = grid[x - 1][y - 1]
+      if (box === "🟥")
+      {
+        return "🟥 💀"
+      }
+      else if (box === "🟦")
+      {
+        return "🟦 🥳"
+      }
     }
+    
 
     // 👉 CHALLENGE 3
     function booleanize(obj) {
-
+      for (let property in obj) {
+    if (property.length > 9) {
+      return "shorten all prop names to 9 chars or less";
     }
+  }
+  for (let property in obj) {
+    if (obj[property] === 1) {
+      obj[property] = true
+    } else if (obj[property] === 0) {
+      obj[property] = false 
+    } else if (obj[property] === null) {
+      delete obj[property]
+    }
+  }
+  return obj
+} 
+
 
     // 👉 CHALLENGE 4
-    function scrub(text, forbidden) {
+    function scrub(text, forbidden) {   
+    let words = text.split(" ")
+    let scrubbed = [];
+    for (let i = 0; i < words.length; i++) {
+        let isForbidden = false
 
+        for (let indx = 0; indx < forbidden.length; indx++) {
+            if (words[i] === forbidden[indx]) {
+                isForbidden = true
+            }
+        }
+        if (isForbidden) {
+            let oopsie = '';
+            for (let q = 0; q < words[i].length; q++) {
+                oopsie += 'x';
+            }
+            scrubbed.push(oopsie)
+        } else {
+            scrubbed.push(words[i])
+        }
     }
+    return scrubbed.join(" ")
+
+    if (text === "" || forbidden.length === 0) {
+        return text;
+    }
+}
+
+
 
     // 👉 CHALLENGE 5 (bonus, NOT graded)
     function normalizePhoneNumber(num) {
